@@ -79,16 +79,8 @@ class GameFragment : Fragment() {
             startRoundTime = System.currentTimeMillis()
             roundDeadlineHandler.sendEmptyMessageDelayed(MSG_ROUND_DEADLINE, settings.roundInterval)
         } else {
-            with(fragmentGameBinding) {
-                roundTv.text = getString(R.string.points)
-                val points = hits * 10f / (totalGameTime / 1000L)
-                "%.1f".format(points).also {
-                    questionTv.text = it
-                }
-                alternativeOneBt.visibility = GONE
-                alternativeTwoBt.visibility = GONE
-                alternativeThreeBt.visibility = GONE
-            }
+            val points = hits * 10f / (totalGameTime / 1000L)
+            (context as OnFinishGame).onFinishGame(points = points)
         }
     }
 
