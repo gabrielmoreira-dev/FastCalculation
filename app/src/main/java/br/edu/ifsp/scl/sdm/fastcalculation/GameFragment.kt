@@ -7,7 +7,6 @@ import android.os.Message
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Button
@@ -79,7 +78,7 @@ class GameFragment : Fragment() {
             startRoundTime = System.currentTimeMillis()
             roundDeadlineHandler.sendEmptyMessageDelayed(MSG_ROUND_DEADLINE, settings.roundInterval)
         } else {
-            val points = hits * 10f / (totalGameTime / 1000L)
+            val points = hits * 10f / (totalGameTime / 1000f)
             (context as OnFinishGame).onFinishGame(points = points)
         }
     }
